@@ -43,7 +43,6 @@ export interface IApiModel {
     removeProduct(item: ProductItem): void;
     clearBasket(): void;
   }
-
   
 export interface IFormModel {
   payment: string;
