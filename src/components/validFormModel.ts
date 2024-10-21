@@ -35,7 +35,7 @@ import {IFormModel} from '../types'
       };
   
       this.formErrors = errors;
-      this.events.emit('1');
+      this.events.emit('formErrors:address', this.formErrors);
       return Object.keys(errors).length === 0;
     }
   
@@ -80,8 +80,8 @@ import {IFormModel} from '../types'
         ...this.validatePhone(),
       };
   
-      this.formErrors = errors;
-      this.events.emit('2');
+      this.formErrors = errors; //здравствуйте, прикриплённого скрина нет, комментариев в коде тоже, или не должно быть.
+      this.events.emit('formErrors:change', this.formErrors); //но тут стояла заглушка, я забыл снять, сейчас с валидацией всё должно быть в порядке
       return Object.keys(errors).length === 0;
     }
   

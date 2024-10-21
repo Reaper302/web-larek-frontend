@@ -38,10 +38,27 @@ export class Card {
   protected formatPrice(price: number | null): string {
     return price !== null ? `${price} синапсов` : 'Бесценно';
   }
+  
+  protected getCategoryClass(category: string): string {
+    switch (category.toLowerCase()) {
+      case 'дополнительное':
+        return 'additional';
+      case 'софт-скил':
+        return 'soft';
+      case 'кнопка':
+        return 'button';
+      case 'хард-скил':
+        return 'hard';
+      default:
+        return 'other';
+    }
+  }
 
   // категория
   set category(value: string) {
     this.updateTextContent(this.categoryElement, value);
+    const categoryClass = this.getCategoryClass(value);
+    this.categoryElement.className = `card__category card__category_${categoryClass}`;
   }
 
   // заголовок
