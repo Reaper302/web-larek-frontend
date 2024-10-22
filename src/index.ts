@@ -88,12 +88,13 @@ const setupEventListeners = () => {
 
   evt.on('order:paymentSelection', (button: HTMLButtonElement) => {
     form.payment = button.name;
+    form.validateOrder();
   });
 
   evt.on('order:changeAddress', (data: { field: string, value: string }) => {
     form.updateAddress(data.field, data.value);
   });
-
+  
   evt.on('formErrors:address', (errors: Partial<Order>) => {
     const { address, payment } = errors;
     order.valid = !address && !payment;
